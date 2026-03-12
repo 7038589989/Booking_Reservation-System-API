@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({ message: "Get all resources" });
-});
+const {
+  createResource,
+  getResources,
+  updateResource,
+  deleteResource
+} = require("../controllers/resourceController");
 
-router.post("/", (req, res) => {
-  res.json({ message: "Create resource" });
-});
+router.post("/", createResource);
+router.get("/", getResources);
+router.put("/:id", updateResource);
+router.delete("/:id", deleteResource);
 
 module.exports = router;
